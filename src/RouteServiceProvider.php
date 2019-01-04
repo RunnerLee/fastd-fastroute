@@ -15,9 +15,9 @@ use FastRoute\RouteParser\Std;
 
 class RouteServiceProvider implements ServiceProviderInterface
 {
-
     /**
      * @param Container $container
+     *
      * @return mixed
      */
     public function register(Container $container)
@@ -37,6 +37,6 @@ class RouteServiceProvider implements ServiceProviderInterface
 
     protected function mapRoutes()
     {
-        require app()->getPath() . '/config/routes.php';
+        require app()->getPath().'/config/routes.php';
     }
 }

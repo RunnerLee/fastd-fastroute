@@ -17,7 +17,6 @@ use FastD\Routing\RouteDispatcher as FastDRouteDispatcher;
 
 class RouteDispatcher
 {
-
     /**
      * @var \FastRoute\Dispatcher
      */
@@ -30,6 +29,7 @@ class RouteDispatcher
 
     /**
      * RouteDispatcher constructor.
+     *
      * @param RouteCollector $routes
      */
     public function __construct(RouteCollector $routes)
@@ -52,7 +52,9 @@ class RouteDispatcher
 
     /**
      * @param ServerRequestInterface $request
+     *
      * @return \Psr\Http\Message\ResponseInterface
+     *
      * @throws \Exception
      */
     public function dispatch(ServerRequestInterface $request)
@@ -81,6 +83,7 @@ class RouteDispatcher
 
     /**
      * @param $callback
+     *
      * @return string
      */
     protected function concat($callback)
@@ -88,6 +91,7 @@ class RouteDispatcher
         if (!is_string($callback)) {
             return $callback;
         }
+
         return "Controller\\{$callback}";
     }
 }

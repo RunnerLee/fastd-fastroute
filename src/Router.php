@@ -10,14 +10,14 @@ namespace Runner\FastDRoute;
 use FastRoute\RouteCollector;
 
 /**
- * Class Router
+ * Class Router.
+ *
  * @method get($uri, $action, $middleware = [])
  * @method post($uri, $action, $middleware = [])
  * @method put($uri, $action, $middleware = [])
  * @method patch($uri, $action, $middleware = [])
  * @method delete($uri, $action, $middleware = [])
  * @method options($uri, $action, $middleware = [])
- * @package Runner\FastDRoute
  */
 class Router
 {
@@ -29,10 +29,11 @@ class Router
     /**
      * @var array
      */
-    protected $methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS', ];
+    protected $methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'];
 
     /**
      * Router constructor.
+     *
      * @param RouteCollector $collector
      */
     public function __construct(RouteCollector $collector)
