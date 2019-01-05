@@ -32,6 +32,11 @@ class Router
     protected $methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'];
 
     /**
+     * @var array
+     */
+    protected $middleware = [];
+
+    /**
      * Router constructor.
      *
      * @param RouteCollector $collector
@@ -39,6 +44,23 @@ class Router
     public function __construct(RouteCollector $collector)
     {
         $this->routes = $collector;
+    }
+
+    /**
+     * @param array $params
+     * @param callable $callback
+     */
+    public function group(array $params, callable $callback)
+    {
+        $temporaryMiddleware = $this->middleware;
+
+        $this->middleware = array_merge($this->middleware, $params['middleware'] ?? []);
+
+        $this->routes->addGroup($params['prefix'] ?? '', function (RouteCollector $routes) use ($callback) {
+            call_user_func($callback, $this);
+        });
+
+        $this->middleware = $temporaryMiddleware;
     }
 
     /**
@@ -51,7 +73,7 @@ class Router
     {
         $this->routes->addRoute($method, $uri, [
             'callback' => $action,
-            'middleware' => $middleware,
+            'middleware' => array_merge($this->middleware, $middleware),
         ]);
     }
 
