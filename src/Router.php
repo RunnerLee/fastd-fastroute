@@ -7,6 +7,7 @@
 
 namespace Runner\FastDRoute;
 
+use BadMethodCallException;
 use FastRoute\RouteCollector;
 
 /**
@@ -86,5 +87,9 @@ class Router
         if (in_array($method = strtoupper($name), $this->methods)) {
             $this->addRoute($method, ...$arguments);
         }
+
+        throw new BadMethodCallException(sprintf(
+            'Call to undefined method %s::%s()', static::class, $name
+        ));
     }
 }
