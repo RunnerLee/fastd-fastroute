@@ -56,7 +56,7 @@ class Router
 
         $this->middleware = array_merge($this->middleware, $params['middleware'] ?? []);
 
-        $this->routes->addGroup($params['prefix'] ?? '', function (RouteCollector $routes) use ($callback) {
+        $this->routes->addGroup($params['prefix'] ?? '', function () use ($callback) {
             call_user_func($callback, $this);
         });
 
