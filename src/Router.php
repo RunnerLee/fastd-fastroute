@@ -47,7 +47,7 @@ class Router
     }
 
     /**
-     * @param array $params
+     * @param array    $params
      * @param callable $callback
      */
     public function group(array $params, callable $callback)
