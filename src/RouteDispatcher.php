@@ -10,10 +10,10 @@ namespace Runner\FastDRoute;
 use FastD\Routing\Exceptions\RouteNotFoundException;
 use FastD\Routing\Route;
 use FastD\Routing\RouteCollection;
+use FastD\Routing\RouteDispatcher as FastDRouteDispatcher;
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
 use Psr\Http\Message\ServerRequestInterface;
-use FastD\Routing\RouteDispatcher as FastDRouteDispatcher;
 
 class RouteDispatcher
 {
@@ -53,9 +53,9 @@ class RouteDispatcher
     /**
      * @param ServerRequestInterface $request
      *
-     * @return \Psr\Http\Message\ResponseInterface
-     *
      * @throws \Exception
+     *
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function dispatch(ServerRequestInterface $request)
     {
