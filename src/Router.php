@@ -72,7 +72,7 @@ class Router
     public function addRoute($method, $uri, $action, $middleware = [])
     {
         $this->routes->addRoute($method, $uri, [
-            'callback' => $action,
+            'callback'   => $action,
             'middleware' => array_merge($this->middleware, $middleware),
         ]);
     }
