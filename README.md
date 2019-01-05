@@ -36,6 +36,11 @@ router()->group(
     function (\Runner\FastDRoute\Router $router) {
         $router->get('/{id:\d+}', 'PostsController@show');
         router()->put('/{id:\d+}', 'PostController@update');
+        router()->get('/export', function (\FastD\Http\ServerRequest $request) {
+            return json([
+                'foo' => 'bar',
+            ]);
+        });
     }
 );
 
