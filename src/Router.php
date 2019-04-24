@@ -84,12 +84,11 @@ class Router
      */
     public function __call($name, $arguments)
     {
-        if (in_array($method = strtoupper($name), $this->methods)) {
-            $this->addRoute($method, ...$arguments);
+        if (!in_array($method = strtoupper($name), $this->methods)) {
+            throw new BadMethodCallException(sprintf(
+                'Call to undefined method %s::%s()', static::class, $name
+            ));
         }
-
-        throw new BadMethodCallException(sprintf(
-            'Call to undefined method %s::%s()', static::class, $name
-        ));
+        $this->addRoute($method, ...$arguments);
     }
 }
