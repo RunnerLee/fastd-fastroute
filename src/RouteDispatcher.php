@@ -50,6 +50,20 @@ class RouteDispatcher
         return $this->dispatcher;
     }
 
+    public function before($middleware)
+    {
+        $this->fastDRouteDispatcher->before($middleware);
+
+        return $this;
+    }
+
+    public function after($middleware)
+    {
+        $this->fastDRouteDispatcher->after($middleware);
+
+        return $this;
+    }
+
     /**
      * @param ServerRequestInterface $request
      *
