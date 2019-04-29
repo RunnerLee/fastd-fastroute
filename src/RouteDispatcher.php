@@ -50,6 +50,11 @@ class RouteDispatcher
         return $this->dispatcher;
     }
 
+    /**
+     * @param $middleware
+     *
+     * @return $this
+     */
     public function before($middleware)
     {
         $this->fastDRouteDispatcher->before($middleware);
@@ -57,6 +62,11 @@ class RouteDispatcher
         return $this;
     }
 
+    /**
+     * @param $middleware
+     *
+     * @return $this
+     */
     public function after($middleware)
     {
         $this->fastDRouteDispatcher->after($middleware);
